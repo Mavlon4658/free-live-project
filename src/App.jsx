@@ -1,7 +1,9 @@
+import { Home } from './pages/Home';
+
 function App() {
   return (
-    <div>
-      <h1 className='text-3xl font-bold underline text-teal-400'>Hello world!</h1>
+    <div className='overflow-hidden'>
+      <Home />
     </div>
   );
 }
