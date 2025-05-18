@@ -23,7 +23,7 @@ body {
   @apply text-base leading-tight font-medium;
 }
 .form-control {
-  @apply border border-primary-black rounded-[10px] h-[60px] px-10 outline-none w-full block dark:bg-gray-muted dark:border-white;
+  @apply border border-primary-black rounded-[10px] sm-min:h-[60px] h-[50px] px-10 outline-none w-full block dark:bg-gray-muted dark:border-white;
 }
 
 @media (max-width: 768px) {

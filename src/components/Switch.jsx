@@ -44,13 +44,15 @@ export const Switch = () => {
         >
           <span className='text-base font-medium'>{label}</span>
           <button
-            className={`w-14 h-7 rounded-full flex items-center transition-colors duration-300 shadow-switch bg-light-surface ${
+            className={`md:w-[80px] h-10 w-[80px] rounded-full flex items-center transition-colors duration-300 shadow-switch bg-light-surface dark:bg-gray-muted dark:shadow-button-dark ${
               notifications[key] ? 'justify-end' : 'justify-start'
             }`}
           >
             <span
-              className={`w-5 h-5 rounded-full mx-1 shadow-btn ${
-                notifications[key] ? 'bg-gradient-primary' : 'bg-gray-muted'
+              className={`w-[34px] h-[34px] rounded-full mx-1 shadow-btn ${
+                notifications[key]
+                  ? 'bg-gradient-primary dark:bg-[#F2F7FD] dark:shadow-button-dark'
+                  : 'bg-gray-muted dark:bg-[#F2F7FD] dark:shadow-button-dark'
               }`}
             ></span>
           </button>

@@ -53,6 +53,11 @@ export const Home = () => {
     // Add API call or other submission logic here
   };
 
+  const handleTimerSettings = () => {
+    console.log('Opening timer settings');
+    // Add timer settings logic here
+  };
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -66,16 +71,18 @@ export const Home = () => {
   return (
     <div className='my-[100px]'>
       <div className='container'>
-        <Tab items={items} activeIndex={1} />
+        <div className='md:block hidden'>
+          <Tab items={items} activeIndex={1} />
+        </div>
         <form onSubmit={handleSubmit}>
-          <div className='mt-10 flex items-start gap-30'>
+          <div className='mt-10 flex items-start md-max:gap-30 gap-5 md:flex-row flex-col md:w-full sm-min:w-[485px] w-[292px] ml-auto'>
             <CustomCard
               cardTitle='Настройки пороговых значений'
-              className='flex-1'
+              className='flex-1 md:w-auto w-full'
             >
               <CustomForm formData={formData} setFormData={setFormData} />
             </CustomCard>
-            <div className='space-y-30 w-[560px]'>
+            <div className='space-y-30 xl-max:w-[560px] lg-max:w-[380px] md:w-[333px] w-full'>
               <CustomCard cardTitle='Настройки оповещений'>
                 <Switch
                   notifications={notifications}
@@ -91,11 +98,11 @@ export const Home = () => {
                 <div className='space-y-[10px]'>
                   <label className='form-label'>Часовой пояс</label>
                   <div
-                    className='border border-primary-black rounded-[10px] h-[60px] outline-none w-full block relative z-10 dark:bg-gray-muted dark:border-white'
+                    className='border border-primary-black rounded-[10px]  sm-min:h-[60px] h-[50px] outline-none w-full block relative z-10 dark:bg-gray-muted dark:border-white'
                     ref={dropdownRef}
                   >
                     <div
-                      className='flex items-center justify-between w-full h-full cursor-pointer px-10'
+                      className='flex items-center justify-between w-full h-full cursor-pointer sm-min:px-10 px-5'
                       onClick={toggleDropdown}
                     >
                       <span>{formData.carbUnit}</span>
@@ -158,24 +165,36 @@ export const Home = () => {
                   Вы можете переключить тему или настроить переключение по
                   таймеру
                 </p>
-                <div className='flex gap-5'>
+                <div className='flex gap-5 xl-max:flex-row flex-col'>
                   <div
-                    className='flex items-center justify-between mb-4 cursor-pointer h-[60px] min-w-[130px] '
+                    className='flex items-center justify-between mb-4 cursor-pointer sm-min:h-[60px] sm-min:min-w-[130px] sm-min:max-w-[130px] min-w-[100px] max-w-[100px] h-[50px]'
                     onClick={toggleTheme}
                   >
                     <button
-                      className={`w-full h-full rounded-full flex items-center transition-colors duration-300 shadow-switch px-[4px] bg-light-surface ${
-                        isDarkTheme ? 'justify-end' : 'justify-start'
+                      className={`w-full h-full rounded-full flex items-center transition-colors duration-300 shadow-switch px-[4px] dark:bg-gray-muted dark:shadow-button-dark ${
+                        isDarkTheme
+                          ? 'justify-end'
+                          : 'bg-light-surface justify-start'
                       }`}
                     >
-                      <div className='bg-gradient-orange shadow-btn w-[50px] h-[50px] flex items-center justify-center rounded-full'>
-                        <img src={assets.soon} alt='' />
-                      </div>
+                      <span
+                        className={`sm-min:w-[50px] sm-min:h-[50px] h-10 w-10 flex items-center justify-center rounded-full shadow-btn ${
+                          isDarkTheme
+                            ? 'bg-gradient-dark dark:shadow-button-dark'
+                            : 'bg-gradient-orange dark:shadow-button-dark'
+                        }`}
+                      >
+                        <img
+                          src={isDarkTheme ? assets.moon : assets.soon}
+                          alt=''
+                        />
+                      </span>
                     </button>
                   </div>
                   <CustomButton
                     label='Настроить по таймеру'
                     className='w-full'
+                    onClick={handleTimerSettings}
                   />
                 </div>
               </CustomCard>

@@ -90,7 +90,7 @@ export const CustomForm = () => {
             ref={dropdownRef}
           >
             <div
-              className='flex items-center justify-between w-full h-full cursor-pointer px-10'
+              className='flex items-center justify-between w-full h-full cursor-pointer sm-min:px-10 px-5'
               onClick={toggleDropdown}
             >
               <span>{formData.carbUnit}</span>
