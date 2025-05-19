@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { CustomButton } from './CustomButton';
+import { CustomButton } from '../button/CustomButton';
 
 export const CustomForm = () => {
   const [formData, setFormData] = useState({
