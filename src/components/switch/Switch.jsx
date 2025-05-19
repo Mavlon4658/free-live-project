@@ -44,7 +44,7 @@ export const Switch = () => {
         >
           <span className='text-base font-medium'>{label}</span>
           <button
-            className={`md:w-[80px] h-10 w-[80px] rounded-full flex items-center transition-colors duration-300 shadow-switch bg-light-surface dark:bg-gray-muted dark:shadow-button-dark ${
+            className={`md:w-[80px] h-10 min-w-[80px] max-w-[80px] rounded-full flex items-center transition-colors duration-300 shadow-switch bg-light-surface dark:bg-gray-muted dark:shadow-button-dark ${
               notifications[key] ? 'justify-end' : 'justify-start'
             }`}
           >
