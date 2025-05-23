@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import assets from '../../assets';
+import { useState } from "react";
+import assets from "../../assets";
 
 export default function Calendar({ initialDate = new Date(), onDateSelect }) {
   const [currentDate, setCurrentDate] = useState(initialDate);
@@ -23,22 +23,22 @@ export default function Calendar({ initialDate = new Date(), onDateSelect }) {
 
   // Russian month names
   const monthNames = [
-    'Январь',
-    'Февраль',
-    'Март',
-    'Апрель',
-    'Май',
-    'Июнь',
-    'Июль',
-    'Август',
-    'Сентябрь',
-    'Октябрь',
-    'Ноябрь',
-    'Декабрь',
+    "Январь",
+    "Февраль",
+    "Март",
+    "Апрель",
+    "Май",
+    "Июнь",
+    "Июль",
+    "Август",
+    "Сентябрь",
+    "Октябрь",
+    "Ноябрь",
+    "Декабрь",
   ];
 
   // Russian day abbreviations
-  const dayNames = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+  const dayNames = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
 
   // Navigate to the previous month
   const prevMonth = () => {
@@ -110,76 +110,76 @@ export default function Calendar({ initialDate = new Date(), onDateSelect }) {
   const calendarDays = generateCalendarDays();
 
   return (
-    <div className='bg-light-surface p-30 rounded-2xl shadow-base w-full text-primary-black dark:bg-dark-surface dark:shadow-card-dark dark:text-white'>
-      <div className='flex justify-between items-center mb-3'>
-        <h2 className='text-2xl font-bold'>
+    <div className="bg-light-surface lg-max:p-30 p-5 rounded-2xl shadow-base w-full text-primary-black dark:bg-dark-surface dark:shadow-card-dark dark:text-white">
+      <div className="flex justify-between items-center mb-3">
+        <h2 className="text-2xl font-bold">
           {monthNames[currentMonth]} {currentYear}
         </h2>
-        <div className='flex space-x-2'>
+        <div className="flex space-x-2">
           <button
             onClick={prevMonth}
-            className='w-11 h-11 flex items-center justify-center'
-            aria-label='Previous month'
+            className="w-11 h-11 flex items-center justify-center"
+            aria-label="Previous month"
           >
             <svg
-              width='8'
-              height='14'
-              viewBox='0 0 8 14'
-              fill='none'
-              xmlns='http://www.w3.org/2000/svg'
+              width="8"
+              height="14"
+              viewBox="0 0 8 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fillRule='evenodd'
-                clipRule='evenodd'
-                d='M6.00163 0.71811C6.37537 0.32692 7.00004 0.32692 7.37378 0.71811C7.72416 1.08485 7.72416 1.6623 7.37378 2.02904L2.62459 7L7.37378 11.971C7.72416 12.3377 7.72416 12.9152 7.37378 13.2819C7.00004 13.6731 6.37537 13.6731 6.00163 13.2819L8.34742e-08 7L6.00163 0.71811Z'
-                fill='url(#paint0_linear_2028_1405)'
-                className='dark:fill-white'
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M6.00163 0.71811C6.37537 0.32692 7.00004 0.32692 7.37378 0.71811C7.72416 1.08485 7.72416 1.6623 7.37378 2.02904L2.62459 7L7.37378 11.971C7.72416 12.3377 7.72416 12.9152 7.37378 13.2819C7.00004 13.6731 6.37537 13.6731 6.00163 13.2819L8.34742e-08 7L6.00163 0.71811Z"
+                fill="url(#paint0_linear_2028_1405)"
+                className="dark:fill-white"
               />
               <defs>
                 <linearGradient
-                  id='paint0_linear_2028_1405'
-                  x1='-1.33333'
-                  y1='7'
-                  x2='7.11111'
-                  y2='7'
-                  gradientUnits='userSpaceOnUse'
+                  id="paint0_linear_2028_1405"
+                  x1="-1.33333"
+                  y1="7"
+                  x2="7.11111"
+                  y2="7"
+                  gradientUnits="userSpaceOnUse"
                 >
-                  <stop stopColor='#020A0D' />
-                  <stop offset='1' stopColor='#020A0D' stop-opacity='0.2' />
+                  <stop stopColor="#020A0D" />
+                  <stop offset="1" stopColor="#020A0D" stop-opacity="0.2" />
                 </linearGradient>
               </defs>
             </svg>
           </button>
           <button
             onClick={nextMonth}
-            className='w-11 h-11 flex items-center justify-center'
-            aria-label='Next month'
+            className="w-11 h-11 flex items-center justify-center"
+            aria-label="Next month"
           >
             <svg
-              width='8'
-              height='14'
-              viewBox='0 0 8 14'
-              fill='none'
-              xmlns='http://www.w3.org/2000/svg'
+              width="8"
+              height="14"
+              viewBox="0 0 8 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fillRule='evenodd'
-                clipRule='evenodd'
-                d='M1.99837 0.71811C1.62463 0.32692 0.999959 0.32692 0.626222 0.71811C0.275843 1.08485 0.275843 1.6623 0.626222 2.02904L5.37541 7L0.626221 11.971C0.275843 12.3377 0.275843 12.9152 0.626222 13.2819C0.999959 13.6731 1.62463 13.6731 1.99837 13.2819L8 7L1.99837 0.71811Z'
-                fill='url(#paint0_linear_2028_143)'
-                className='dark:fill-white'
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M1.99837 0.71811C1.62463 0.32692 0.999959 0.32692 0.626222 0.71811C0.275843 1.08485 0.275843 1.6623 0.626222 2.02904L5.37541 7L0.626221 11.971C0.275843 12.3377 0.275843 12.9152 0.626222 13.2819C0.999959 13.6731 1.62463 13.6731 1.99837 13.2819L8 7L1.99837 0.71811Z"
+                fill="url(#paint0_linear_2028_143)"
+                className="dark:fill-white"
               />
               <defs>
                 <linearGradient
-                  id='paint0_linear_2028_143'
-                  x1='9.33333'
-                  y1='7'
-                  x2='0.888888'
-                  y2='7'
-                  gradientUnits='userSpaceOnUse'
+                  id="paint0_linear_2028_143"
+                  x1="9.33333"
+                  y1="7"
+                  x2="0.888888"
+                  y2="7"
+                  gradientUnits="userSpaceOnUse"
                 >
-                  <stop stopColor='#020A0D' />
-                  <stop offset='1' stopColor='#020A0D' stopOpacity='0.2' />
+                  <stop stopColor="#020A0D" />
+                  <stop offset="1" stopColor="#020A0D" stopOpacity="0.2" />
                 </linearGradient>
               </defs>
             </svg>
@@ -187,12 +187,12 @@ export default function Calendar({ initialDate = new Date(), onDateSelect }) {
         </div>
       </div>
 
-      <div className='grid grid-cols-7 gap-0 w-[442px] mx-auto'>
+      <div className="grid grid-cols-7 gap-0 xl-max:w-[442px] w-full mx-auto">
         {/* Day names */}
         {dayNames.map((day, index) => (
           <div
             key={index}
-            className='text-center font-medium w-16 h-16 flex items-center justify-center'
+            className="text-center font-medium xl-max:w-16 w-full xl-max:h-16 h-[50px] flex items-center justify-center"
           >
             {day}
           </div>
@@ -203,15 +203,15 @@ export default function Calendar({ initialDate = new Date(), onDateSelect }) {
           <div
             key={index}
             className={`
-              border border-[#9ca2a7] dark:border-[#7d7f84] aspect-square w-16 h-16 flex items-center justify-center text-center
+              border border-[#9ca2a7] dark:border-[#7d7f84] aspect-square xl-max:w-16 xl-max:h-16 w-full h-[50px] flex items-center justify-center text-center
               ${
                 !day.isCurrentMonth
-                  ? 'text-primary-black opacity-20 dark:opacity-100 dark:text-white'
-                  : ''
+                  ? "text-primary-black opacity-20 dark:opacity-100 dark:text-white"
+                  : ""
               }
-              ${day.isSelected ? 'bg-gradient-primary text-white' : ''}
+              ${day.isSelected ? "bg-gradient-primary text-white" : ""}
               cursor-pointer transition-colors hover:bg-gradient-primary
-              ${day.isSelected ? 'hover:bg-blue-600' : ''}
+              ${day.isSelected ? "hover:bg-blue-600" : ""}
             `}
             onClick={() => handleDateClick(day.day, day.isCurrentMonth)}
           >
