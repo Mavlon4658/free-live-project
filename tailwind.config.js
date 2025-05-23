@@ -21,6 +21,9 @@ export default {
         'primary-black': "#020A0D",
         'neutral-gray': "#62696d",
         "gray-muted": "#34373E",
+        'green': "#22E2AD",
+        'gold': "#E2DC22",
+        "red": "#C90404"
       },
       fontFamily: {
         'exo': ['"Exo 2"', 'sans-serif'],

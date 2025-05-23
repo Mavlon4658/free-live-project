@@ -6,7 +6,7 @@ import trash from './icons/trash.svg';
 import edit from './icons/edit.svg';
 import arrowLeft from './icons/arrow-left.svg';
 import arrowRight from './icons/arrow-right.svg';
-
+import download from './icons/download.svg';
 export default {
   arrowDown,
   soon,
@@ -15,5 +15,6 @@ export default {
   trash,
   edit,
   arrowLeft,
-  arrowRight
+  arrowRight,
+  download
 }
