@@ -3,7 +3,7 @@
 import { useState } from "react";
 import assets from "../../assets";
 
-export default function Calendar({ initialDate = new Date(), onDateSelect }) {
+export default function Calendar({ initialDate = new Date(), onDateSelect, className }) {
   const [currentDate, setCurrentDate] = useState(initialDate);
   const [selectedDate, setSelectedDate] = useState(initialDate);
 
@@ -110,7 +110,7 @@ export default function Calendar({ initialDate = new Date(), onDateSelect }) {
   const calendarDays = generateCalendarDays();
 
   return (
-    <div className="bg-light-surface lg-max:p-30 p-5 rounded-2xl shadow-base w-full text-primary-black dark:bg-dark-surface dark:shadow-card-dark dark:text-white">
+    <div className={`bg-light-surface lg-max:p-30 p-5 rounded-2xl shadow-base w-full text-primary-black dark:bg-dark-surface dark:shadow-card-dark dark:text-white ${className}`}>
       <div className="flex justify-between items-center mb-3">
         <h2 className="text-2xl font-bold">
           {monthNames[currentMonth]} {currentYear}

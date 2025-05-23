@@ -13,6 +13,9 @@ input[type="number"]::-webkit-outer-spin-button {
   appearance: none;
   margin: 0;
 }
+input {
+  outline: none !important;
+}
 body {
   @apply bg-light-surface font-exo font-normal text-black dark:bg-gradient-dark min-h-screen;
 }
@@ -20,7 +23,7 @@ body {
   @apply xl-max:max-w-[1328px] lg-max:max-w-[895px] md-max:max-w-[767px] md:max-w-[860px] max-w-[486px] mx-auto;
 }
 .form-label {
-  @apply text-base leading-tight font-medium;
+  @apply sm:text-base text-sm leading-tight font-medium;
 }
 .form-control {
   @apply border border-primary-black rounded-[10px] sm-min:h-[60px] h-[50px] px-10 outline-none w-full block dark:bg-gray-muted dark:border-white;
@@ -34,4 +37,11 @@ body {
   .container {
     @apply max-w-full px-[10px];
   }
+  .form-control {
+    height: 50px;
+  }
+}
+
+.no-scroll::-webkit-scrollbar {
+  @apply hidden;
 }
