@@ -1,6 +1,6 @@
 import assets from '../../assets';
 
-export const MonitoringStatusCard = () => {
+export const MonitoringStatusCard = ({ onAddReportClick }) => {
   return (
     <div className='bg-white dark:bg-gray-muted rounded-xl shadow-base dark:shadow-card-dark'>
       <div
@@ -13,8 +13,9 @@ export const MonitoringStatusCard = () => {
           </h3>
           <button
             className={`sm-min:w-[120px] sm-min:h-[120px] w-[70px] h-[70px] flex items-center justify-center rounded-full sm-min:-mr-2 shadow-base bg-gradient-primary dark:shadow-card-dark`}
+            onClick={onAddReportClick}
           >
-            <img src={assets.plus} alt='' />
+            <img src={assets.plus} alt='Add report' />
           </button>
         </div>
       </div>
@@ -53,7 +54,7 @@ export const MonitoringStatusCard = () => {
           </div>
           <div className='flex gap-5 absolute -bottom-6 right-5'>
             <button className='rounded-full w-[50px] h-[50px] flex items-center justify-center bg-gradient-orange shadow-btn dark:shadow-button-dark'>
-              <img src={assets.download} alt='' />
+              <img src={assets.download} alt='Download' />
             </button>
           </div>
         </div>
@@ -90,7 +91,7 @@ export const MonitoringStatusCard = () => {
           </div>
           <div className='flex gap-5 absolute -bottom-6 right-5'>
             <button className='rounded-full w-[50px] h-[50px] flex items-center justify-center bg-gradient-orange shadow-btn dark:shadow-button-dark'>
-              <img src={assets.download} alt='' />
+              <img src={assets.download} alt='Download' />
             </button>
           </div>
         </div>
@@ -127,7 +128,7 @@ export const MonitoringStatusCard = () => {
           </div>
           <div className='flex gap-5 absolute -bottom-6 right-5'>
             <button className='rounded-full w-[50px] h-[50px] flex items-center justify-center bg-gradient-orange shadow-btn dark:shadow-button-dark'>
-              <img src={assets.download} alt='' />
+              <img src={assets.download} alt='Download' />
             </button>
           </div>
         </div>

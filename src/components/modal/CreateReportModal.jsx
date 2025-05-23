@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Calendar from "../calendar/Calendar";
 import { CustomButton } from "../button/CustomButton";
 
-export const CreateReportModal = () => {
+export const CreateReportModal = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
     highSugar: 14,
     upperLimit: 14,
@@ -19,6 +19,7 @@ export const CreateReportModal = () => {
   });
   const carbDropdownRef = useRef(null);
   const reportTypeDropdownRef = useRef(null);
+  const modalContentRef = useRef(null);
 
   const carbOptions = [
     "Хлебная единица (15 гр)",
@@ -60,26 +61,31 @@ export const CreateReportModal = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
+      // Check if click is outside modal content and dropdowns
       if (
-        carbDropdownRef.current &&
-        !carbDropdownRef.current.contains(event.target) &&
-        reportTypeDropdownRef.current &&
-        !reportTypeDropdownRef.current.contains(event.target)
+        modalContentRef.current &&
+        !modalContentRef.current.contains(event.target) &&
+        (!carbDropdownRef.current ||
+          !carbDropdownRef.current.contains(event.target)) &&
+        (!reportTypeDropdownRef.current ||
+          !reportTypeDropdownRef.current.contains(event.target))
       ) {
         setIsDropdownOpen({
           carbUnit: false,
           reportType: false,
         });
+        onClose(); // Close the modal
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  }, [onClose]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
+    onClose(); // Close modal after submission
     // Add your API call or submission logic here
   };
 
@@ -101,7 +107,6 @@ export const CreateReportModal = () => {
           viewBox="0 0 20 12"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="sm:w-5 sm:h-3 w-2 h-3"
         >
           <path
             d="M18.3137 0.795607C18.4092 0.70118 18.5214 0.62736 18.6441 0.578362C18.7667 0.529362 18.8974 0.506143 19.0286 0.51003C19.1598 0.513918 19.289 0.544836 19.4089 0.601018C19.5287 0.657201 19.6367 0.737548 19.7269 0.837472C19.8171 0.937396 19.8876 1.05494 19.9344 1.18339C19.9811 1.31185 20.0033 1.44869 19.9996 1.58612C19.9959 1.72355 19.9664 1.85886 19.9127 1.98434C19.8591 2.10982 19.7823 2.223 19.6869 2.31743L10.6922 11.2139C10.5067 11.3976 10.261 11.5 10.0056 11.5C9.75026 11.5 9.50458 11.3976 9.31902 11.2139L0.323299 2.31743C0.225796 2.22363 0.147058 2.11047 0.0916672 1.98453C0.0362759 1.85859 0.00533104 1.72238 0.000629425 1.58381C-0.00407219 1.44524 0.0175667 1.30707 0.0642834 1.17733C0.111002 1.04759 0.18187 0.928868 0.27277 0.828055C0.363672 0.727242 0.472795 0.646349 0.593801 0.590075C0.714806 0.5338 0.845284 0.503267 0.977652 0.500248C1.11002 0.49723 1.24164 0.521784 1.36487 0.572488C1.48811 0.623192 1.60049 0.699033 1.69549 0.795607L10.0056 9.01386L18.3137 0.795607Z"
@@ -142,9 +147,16 @@ export const CreateReportModal = () => {
   );
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white py-10 sm:px-8 px-[10px] sm:w-[620px] w-[340px] max-h-[90vh] shadow-base rounded-[10px] overflow-y-auto dark:bg-gray-muted no-scroll">
-        <h3 className="mb-8 text-center uppercase sm:text-2xl text-base font-semibold text-gray-900 dark:text-white">
+    <div
+      className={`modal fixed inset-0 items-center justify-center bg-black bg-opacity-50 ${
+        isOpen ? "flex" : "hidden"
+      }`}
+    >
+      <div
+        ref={modalContentRef}
+        className="modal-content bg-white py-10 sm:px-8 px-[10px] sm:w-[620px] w-[340px] max-h-[90vh] shadow-base rounded-[10px] overflow-y-auto dark:bg-gray-muted no-scroll"
+      >
+        <h3 className="text-center uppercase sm:text-2xl text-base font-semibold text-gray-900 dark:text-white mb-8">
           Новый отчет
         </h3>
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -185,17 +197,70 @@ export const CreateReportModal = () => {
                 name="startDate"
                 value={formData.startDate}
                 onChange={handleInputChange}
-                className="form-control bg-[#F2F7FD] dark:bg-gray-700 dark:text-white border dark:border-white rounded-[10px] h-[50px] sm:h-[60px] sm:px-4 px-3 w-full focus:outline-none sm:text-base text-[10px] sm:text-left text-center  focus:ring-blue-500 dark:bg-gray-muted outline-none"
+                className="form-control bg-[#F2F7FD] dark:bg-gray-700 dark:text-white border dark:border-white rounded-[10px] h-[50px] sm:h-[60px] sm:px-4 px-3 w-full focus:outline-none sm:text-base text-[10px] sm:text-left text-center focus:ring-blue-500 dark:bg-gray-muted outline-none"
               />
               <input
                 type="text"
                 name="endDate"
                 value={formData.endDate}
                 onChange={handleInputChange}
-                className="form-control bg-[#F2F7FD] dark:bg-gray-700 dark:text-white border dark:border-white rounded-[10px] h-[50px] sm:h-[60px] sm:px-4 px-3 w-full focus:outline-none sm:text-base text-[10px] sm:text-left text-center  focus:ring-blue-500 dark:bg-gray-muted outline-none"
+                className="form-control bg-[#F2F7FD] dark:bg-gray-700 dark:text-white border dark:border-white rounded-[10px] h-[50px] sm:h-[60px] sm:px-4 px-3 w-full focus:outline-none sm:text-base text-[10px] sm:text-left text-center focus:ring-blue-500 dark:bg-gray-muted outline-none"
               />
             </div>
           </div>
+
+          {/* Numeric Inputs */}
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <label className="form-label sm:text-base text-sm text-primary-black dark:text-white">
+                Высокий сахар
+              </label>
+              <input
+                type="number"
+                name="highSugar"
+                value={formData.highSugar}
+                onChange={handleInputChange}
+                className="form-control bg-[#F2F7FD] dark:bg-gray-700 dark:text-white border dark:border-white rounded-[10px] h-[50px] sm:h-[60px] sm:px-4 px-3 w-full focus:outline-none sm:text-base text-[10px] focus:ring-blue-500 dark:bg-gray-muted outline-none"
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="form-label sm:text-base text-sm text-primary-black dark:text-white">
+                Верхний предел
+              </label>
+              <input
+                type="number"
+                name="upperLimit"
+                value={formData.upperLimit}
+                onChange={handleInputChange}
+                className="form-control bg-[#F2F7FD] dark:bg-gray-700 dark:text-white border dark:border-white rounded-[10px] h-[50px] sm:h-[60px] sm:px-4 px-3 w-full focus:outline-none sm:text-base text-[10px] focus:ring-blue-500 dark:bg-gray-muted outline-none"
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="form-label sm:text-base text-sm text-primary-black dark:text-white">
+                Нижний предел
+              </label>
+              <input
+                type="number"
+                name="lowerLimit"
+                value={formData.lowerLimit}
+                onChange={handleInputChange}
+                className="form-control bg-[#F2F7FD] dark:bg-gray-700 dark:text-white border dark:border-white rounded-[10px] h-[50px] sm:h-[60px] sm:px-4 px-3 w-full focus:outline-none sm:text-base text-[10px] focus:ring-blue-500 dark:bg-gray-muted outline-none"
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="form-label sm:text-base text-sm text-primary-black dark:text-white">
+                Низкий сахар
+              </label>
+              <input
+                type="number"
+                name="lowSugar"
+                value={formData.lowSugar}
+                onChange={handleInputChange}
+                className="form-control bg-[#F2F7FD] dark:bg-gray-700 dark:text-white border dark:border-white rounded-[10px] h-[50px] sm:h-[60px] sm:px-4 px-3 w-full focus:outline-none sm:text-base text-[10px] focus:ring-blue-500 dark:bg-gray-muted outline-none"
+              />
+            </div>
+          </div>
+
           <Calendar className="sm:w-full w-[calc(100%_+_20px)] sm:ml-0 -ml-[10px] sm:rounded-2xl rounded-0" />
 
           <CustomButton
