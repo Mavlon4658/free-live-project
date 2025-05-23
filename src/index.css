@@ -6,8 +6,8 @@ a,
 span {
   @apply inline-block;
 }
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -25,7 +25,11 @@ body {
 .form-control {
   @apply border border-primary-black rounded-[10px] sm-min:h-[60px] h-[50px] px-10 outline-none w-full block dark:bg-gray-muted dark:border-white;
 }
-
+@media (max-width: 980px) {
+  .container {
+    @apply max-w-full px-5;
+  }
+}
 @media (max-width: 768px) {
   .container {
     @apply max-w-full px-[10px];
