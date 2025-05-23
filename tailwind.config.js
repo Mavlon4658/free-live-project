@@ -15,6 +15,7 @@ export default {
         'gradient-orange': "linear-gradient(129.32deg, #FCE32C 6.33%, #EC672B 76.01%)",
         'gradient-primary': "linear-gradient(180deg, #46BFF4 0%, #4095EE 100%)",
         'gradient-dark': "linear-gradient(180deg, #52555B 0%, #13161A 100%)",
+        'gradient-pink': "linear-gradient(306.84deg, #E1C9FF -9.11%, #7F27F0 100.45%)"
       },
       colors: {
         'primary-black': "#020A0D",
